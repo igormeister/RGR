@@ -1,3 +1,12 @@
+<?php
+include_once('functions.php');
+$link = dbConnect();
+if (isset($_SESSION['token'])) {
+    $token = $_SESSION['token'];
+    $person = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM person WHERE token='".$token."'"));
+}
+?>
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:#0094f9">
         <a class="navbar-brand" href="#">YourCode</a>
@@ -6,12 +15,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
+                <?php if(!isset($token)): ?>
                 <li class="nav-item active">
-                    <a class="btn btn-light" href="#">Log in</a>
+                    <a class="btn btn-light" href="signin.php">Sign in</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-light" href="#">Log out</a>
+                    <a class="btn btn-light" href="signup.php">Sign up</a>
                 </li>
+                <?php endif; ?>
+
+                <?php if(isset($token)): ?>
+                <li class="nav-item active">
+                    <a class="btn btn-light" href="system/system_log_out.php">Log out</a>
+                </li>
+                <?php endif; ?>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
