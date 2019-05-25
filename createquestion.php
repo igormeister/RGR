@@ -1,4 +1,9 @@
 <?php include_once('top.php'); ?>
+<?php
+    if (!isset($person)) {
+        header('Location: index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +20,7 @@
     <div class="container-fluid">
         <div class="row">
             <?php include_once('left-side.php'); ?>
-            <?php include_once('center-side.php'); ?>
+            <?php include_once('center-add-question.php'); ?>
             <?php include_once('right-side.php'); ?>
         </div>
     </div>

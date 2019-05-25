@@ -6,7 +6,7 @@ include_once('../functions.php');
 
 $link = dbConnect();
 
-$login = $_POST['login'];
+$login =  mysqli_real_escape_string($link, $_POST['login']);
 $password = md5($_POST['password']);
 $token = md5($password);
 

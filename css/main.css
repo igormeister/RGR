@@ -34,3 +34,13 @@
     margin-top:90px; 
     margin-bottom: 20px;
 }
+
+.ellipsis {
+    text-overflow: ellipsis;
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    height: 2em;
+    overflow-y: hidden;
+}

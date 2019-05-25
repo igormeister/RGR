@@ -1,4 +1,15 @@
 <?php include_once('top.php'); ?>
+<?php
+    if (!isset($person)) {
+        header('Location: index.php');
+    } else {
+        $selectQuestion = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM question WHERE id ='".$_GET['id']."'"));
+        if ($person['id'] != $selectQuestion['user_id']) {
+            header('Location: index.php');
+        }
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +26,7 @@
     <div class="container-fluid">
         <div class="row">
             <?php include_once('left-side.php'); ?>
-            <?php include_once('center-side.php'); ?>
+            <?php include_once('center-edit-question.php'); ?>
             <?php include_once('right-side.php'); ?>
         </div>
     </div>
