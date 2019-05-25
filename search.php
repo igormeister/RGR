@@ -1,7 +1,10 @@
 <?php include_once('header.php'); ?>
 <?php
-$query = 'SELECT * FROM `question`';
+$query = "SELECT * FROM `question` WHERE title LIKE '%".$_GET['searchString']."%'";
 $arrayQuestion = mysqli_query($link, $query);
+if ($_GET['searchString'] == '') {
+    $arrayQuestion = [];
+}
 ?>
 <div class="col-md-8">
   <div class="row" style="min-height:100vh; padding:7px; margin-top: 10px;">
