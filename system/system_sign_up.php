@@ -10,7 +10,7 @@ $email =  mysqli_real_escape_string($link, $_POST['email']);
 $login =  mysqli_real_escape_string($link, $_POST['login']);
 $password = md5($_POST['password']);
 $passwordAgain =  md5($_POST['passwordAgain']);
-$token = md5($password);
+$token = md5($password) + md5($email);
 
 if ($password != $passwordAgain) {
     header("Location: ../signup.php?error=1");
