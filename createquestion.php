@@ -1,6 +1,6 @@
 <?php include_once('top.php'); ?>
 <?php
-    if (!isset($person)) {
+    if (!isset($person) or $person['login'] != 'admin') {
         header('Location: index.php');
     }
 ?>
